@@ -33,6 +33,8 @@ jobs:
     needs: test
     if: startsWith(github.event.head_commit.message, 'pub')
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -41,6 +43,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - name: Publish to npm
-        run: npm publish --no-git-checks
+        run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
