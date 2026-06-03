@@ -1,7 +1,7 @@
 {
   "name": "qwq-npm-test",
-  "version": "0.1.3",
-  "description": "test github ci",
+  "version": "0.1.4",
+  "description": "test github ci 🧪🚀✅",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

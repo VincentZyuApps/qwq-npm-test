@@ -1,4 +1,5 @@
-![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
+![qwq-npm-test](https://socialify.git.ci/VincentZyu233/qwq-npm-test/image?custom_description=test+github+ci+%F0%9F%A7%AA%F0%9F%9A%80%E2%9C%85&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
+
 # qwq-npm-test
 
 > test github ci
@@ -55,6 +56,20 @@ git commit -m "pub qwq"
 # 5. Push / 推送
 git push -u origin master
 ```
+
+### 🔑 NPM Token 配置 / NPM Token Setup
+
+| 字段 / Field | 值 / Value |
+|---|---|
+| Token type | Granular Access Token |
+| **✔ Bypass 2FA** | **必须勾选 / Required** |
+| Packages → Permissions | **Read and write** |
+| Packages → Scope | **All packages** 或只选 `qwq-npm-test` |
+| Organizations | No access（个人包 / personal package） |
+| Expiration | 建议 **No expiration** 或 **90 days** |
+
+> 生成后在 GitHub 仓库 **Settings → Secrets and variables → Actions** 添加 `NPM_TOKEN`。
+> After generating, add `NPM_TOKEN` in GitHub repo **Settings → Secrets and variables → Actions**.
 
 ### ⚙️ Notes / 操作提醒
 
