@@ -20,7 +20,9 @@ npm login --registry https://registry.npmjs.org
 # 3. 在项目根目录创建 .npmrc，写入：
 #    //registry.npmjs.org/:_authToken=npm_xxxxx （从 npm 官网申请的 Access Token）
 echo "//registry.npmjs.org/:_authToken=npm_xxxxx" > .npmrc
-# 4. 发布
+# 4.测试
+npm test
+# 5. 发布
 npm publish --registry https://registry.npmjs.org
 ```
 
