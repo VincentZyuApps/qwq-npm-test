@@ -1,4 +1,4 @@
-![qwq-npm-test](https://socialify.git.ci/VincentZyu233/qwq-npm-test/image?custom_description=test+github+ci+%F0%9F%A7%AA%F0%9F%9A%80%E2%9C%85&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
+![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?custom_description=test+github+ci+%F0%9F%A7%AA%F0%9F%9A%80%E2%9C%85&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 
 # qwq-npm-test
 
@@ -12,75 +12,66 @@
 
 ---
 
-## 📦 Manual Publish to npm / 手动发布到 npm
+## 📦 Manual Publish to npm
 
 ```bash
-# 1. Initialize / 初始化
+# 1. Initialize
 npm init -y
 # 2. Login to npm (use proxychains or env proxy if needed)
-#    登录 npm（需要代理的话可以用 proxychains 或者环境变量）
 npm login --registry https://registry.npmjs.org
 # 3. Create .npmrc in project root, write:
-#    在项目根目录创建 .npmrc，写入：
-#    //registry.npmjs.org/:_authToken=npm_xxxxx（Access Token from npm website）
+#    //registry.npmjs.org/:_authToken=npm_xxxxx (Access Token from npm website)
 echo "//registry.npmjs.org/:_authToken=npm_xxxxx" > .npmrc
-# 4. Test / 测试
+# 4. Test
 npm test
-# 5. Publish / 发布
+# 5. Publish
 npm publish --registry https://registry.npmjs.org
 ```
 
-## 🤖 Auto Publish / GitHub Actions 自动发布
+## 🤖 Auto Publish via GitHub Actions
 
-> **Note:** First add `NPM_TOKEN` in GitHub repo Settings → Secrets and variables → Actions → New repository secret.
-
-> **注意:** 先在 GitHub 仓库 Settings → Secrets and variables → Actions → New repository secret 中添加 `NPM_TOKEN`（值为 npm 网站的 `npm_...` Access Token）。
+> **Note:** First add `NPM_TOKEN` in GitHub repo **Settings → Secrets and variables → Actions → New repository secret**.
 
 ```bash
-# 1. Init Git repo / 初始化 Git 仓库
+# 1. Init Git repo
 git init
 git remote add origin git@github.com:VincentZyuApps/qwq-npm-test.git
 # 2. Add .npmrc to .gitignore (avoid leaking token)
-#    忽略 .npmrc（避免泄漏 token）
 touch .gitignore
 echo ".npmrc" >> .gitignore
-# 3. Commit and bump version / 提交并 bump 版本
+# 3. Commit and bump version
 git add .
 git commit -m "chore: save changes before version bump"
 npm version patch
-# Or manually update version / 或者手动修改版本号
+# Or manually update version
 # 4. Commit again (message must start with "pub" to trigger publish)
-#    再次提交（commit message 必须以 "pub" 开头才会触发发布）
 git add .
 git commit -m "pub qwq"
-# 5. Push / 推送
+# 5. Push
 git push -u origin master
 ```
 
-### 🔑 NPM Token 配置 / NPM Token Setup
+### 🔑 NPM Token Setup
 
-| 字段 / Field | 值 / Value |
+| Field | Value |
 |---|---|
 | Token type | Granular Access Token |
-| **✔ Bypass 2FA** | **必须勾选 / Required** |
+| **✔ Bypass 2FA** | **Required** |
 | Packages → Permissions | **Read and write** |
-| Packages → Scope | **All packages** 或只选 `qwq-npm-test` |
-| Organizations | No access（个人包 / personal package） |
-| Expiration | 建议 **No expiration** 或 **90 days** |
+| Packages → Scope | **All packages** or select `qwq-npm-test` only |
+| Organizations | No access |
+| Expiration | **No expiration** or **90 days** recommended |
 
-> 生成后在 GitHub 仓库 **Settings → Secrets and variables → Actions** 添加 `NPM_TOKEN`。
 > After generating, add `NPM_TOKEN` in GitHub repo **Settings → Secrets and variables → Actions**.
 
-### ⚙️ Notes / 操作提醒
+### ⚙️ Notes
 
 When pushing to `master` or `main`, GitHub Actions checks the commit message:
-当 push 到 `master` / `main` 分支时，GitHub Actions 会自动检查 commit message：
 
-- **starts with `pub` / 以 `pub` 开头**（case-insensitive / 不区分大小写）→ auto runs `npm publish` / 自动执行 `npm publish`
-- **otherwise / 否则** → skip / 跳过
+- **starts with `pub`** (case-insensitive) → auto runs `npm publish`
+- **otherwise** → skip
 
-
-### 🔁 CI Workflow / CI 流程图
+### 🔁 CI Workflow
 
 ```mermaid
 flowchart TD
