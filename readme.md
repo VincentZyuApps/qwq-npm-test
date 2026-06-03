@@ -1,4 +1,4 @@
-![qwq-npm-test](https://socialify.git.ci/VincentZyu233/qwq-npm-test/image?description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
+![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 # qwq-npm-test
 
 > test github ci
@@ -6,8 +6,8 @@
 [![npm version](https://img.shields.io/npm/v/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test)
 [![npm downloads](https://img.shields.io/npm/dm/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test)
 
-[![CI Status](https://img.shields.io/github/actions/workflow/status/VincentZyu233/qwq-npm-test/publish.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/VincentZyu233/qwq-npm-test/actions/workflows/publish.yml)
-[![GitHub last commit](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FVincentZyu233%2Fqwq-npm-test%2Fcommits%2Fmaster&query=%24.commit.committer.date&label=last%20commit&style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyu233/qwq-npm-test)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/VincentZyuApps/qwq-npm-test/publish.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/VincentZyuApps/qwq-npm-test/actions/workflows/publish.yml)
+[![GitHub last commit](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FVincentZyuApps%2Fqwq-npm-test%2Fcommits%2Fmaster&query=%24.commit.committer.date&label=last%20commit&style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/qwq-npm-test)
 
 ---
 
@@ -38,7 +38,7 @@ npm publish --registry https://registry.npmjs.org
 ```bash
 # 1. Init Git repo / 初始化 Git 仓库
 git init
-git remote add origin git@github.com:VincentZyu233/qwq-npm-test.git
+git remote add origin git@github.com:VincentZyuApps/qwq-npm-test.git
 # 2. Add .npmrc to .gitignore (avoid leaking token)
 #    忽略 .npmrc（避免泄漏 token）
 touch .gitignore
