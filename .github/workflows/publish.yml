@@ -3,27 +3,43 @@ name: Manual Publish by Commit Message
 on:
   push:
     branches:
-      - master  # 只有推送到主分支才检查
+      - master
+      - main
 
 jobs:
-  publish:
-    # 核心判断：如果提交信息以 "pub" 开头（忽略大小写），则执行
-    if: startsWith(github.event.head_commit.message, 'pub')
+  check-commit:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
-      
+      - name: Check commit message
+        run: |
+          echo "Commit message: ${{ github.event.head_commit.message }}"
+          echo "Triggered by: ${{ github.actor }}"
+
+  test:
+    needs: check-commit
+    if: startsWith(github.event.head_commit.message, 'pub')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install
+      - name: Run tests
+        run: npm test
+
+  publish:
+    needs: test
+    if: startsWith(github.event.head_commit.message, 'pub')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-          
       - run: npm install
-      
-      # 额外保护：发布前自动测试（可选）
-      # - run: npm test 
-
       - name: Publish to npm
         run: npm publish --no-git-checks
         env:
