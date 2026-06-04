@@ -4,17 +4,50 @@
 
 > test github ci
 
-[![npm](https://img.shields.io/npm/v/qwq-npm-test?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/qwq-npm-test)
-[![npm scoped](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped)
-
-| Registry | Package | Command | Badge |
-|---|---|---|---|
-| [npmjs.org](https://www.npmjs.com) | [`qwq-npm-test`](https://www.npmjs.com/package/qwq-npm-test) | `npm publish` | [![npm version](https://img.shields.io/npm/v/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) [![npm downloads](https://img.shields.io/npm/dm/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) |
-| [npmjs.org](https://www.npmjs.com) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) | `npm publish --access public` | [![npm scoped version](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) [![npm scoped downloads](https://img.shields.io/npm/dm/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) |
-| [GitHub Packages](https://github.com/features/packages) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) | `npm publish --registry https://npm.pkg.github.com` | [![GitHub Package](https://img.shields.io/badge/gh-packages-blue?logo=github)](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) |
-
+[![npm-unscoped](https://img.shields.io/npm/v/qwq-npm-test?label=npm-unscoped&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/qwq-npm-test)
+[![npm-scoped](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped?label=npm-scoped&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped)
+[![github-packages](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped?label=github-packages&style=for-the-badge&logo=github)](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped)
 
 [![CI Status](https://img.shields.io/github/actions/workflow/status/VincentZyuApps/qwq-npm-test/publish.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/VincentZyuApps/qwq-npm-test/actions/workflows/publish.yml)
+
+---
+
+## 📊 Package Overview
+
+| Registry | Package | Type | Badge |
+|---|---|---|---|
+| [npmjs.org](https://www.npmjs.com) | [`qwq-npm-test`](https://www.npmjs.com/package/qwq-npm-test) | 📦 npm Unscoped | [![npm version](https://img.shields.io/npm/v/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) [![npm downloads](https://img.shields.io/npm/dm/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) |
+| [npmjs.org](https://www.npmjs.com) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) | 🏷️ npm Scoped | [![npm scoped version](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) [![npm scoped downloads](https://img.shields.io/npm/dm/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) |
+| [GitHub Packages](https://github.com/features/packages) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) | 🐙 GitHub Packages Scoped | [![GitHub Package](https://img.shields.io/badge/gh-packages-blue?logo=github)](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) |
+
+
+
+## 📚 Package Types Explained
+
+This project publishes **3 packages** across **2 registries**. Here's what each means:
+
+| | 📦 npm Unscoped | 🏷️ npm Scoped | 🐙 GitHub Packages Scoped |
+|---|---|---|---|
+| **Package name** | `qwq-npm-test` | `@vincentzyuapps/qwq-npm-test-scoped` | `@vincentzyuapps/qwq-npm-test-scoped` |
+| **Registry** | [npmjs.org](https://www.npmjs.com) | [npmjs.org](https://www.npmjs.com) | [npm.pkg.github.com](https://npm.pkg.github.com) |
+| **Default visibility** | Public | **Private** (need `--access public`) | Private (org-scoped) |
+| **Name uniqueness** | Global — first come, first served | Under `@owner` namespace — no conflicts with other orgs | Under GitHub org namespace |
+| **Auth** | `NPM_TOKEN` | `NPM_TOKEN` | `GITHUB_TOKEN` |
+| **Publish command** | `npm publish` | `npm publish --access public` | `npm publish --registry https://npm.pkg.github.com` |
+
+### 📦 npm Unscoped
+
+Packages without a `@scope` prefix have a **globally unique name** — once `qwq-npm-test` is taken, nobody else can publish under that name. They are **always public** and can be installed with `npm install qwq-npm-test`.
+
+### 🏷️ npm Scoped
+
+Scoped packages follow the format `@owner/package-name`. The name only needs to be unique within your scope, so you don't have to worry about name squatting. However, npm scoped packages are **private by default** — you need `--access public` to share them publicly. Install with `npm install @vincentzyuapps/qwq-npm-test-scoped`.
+
+### 🐙 GitHub Packages Scoped
+
+GitHub Packages also uses npm-compatible scoped names (`@owner/name`), but it points to **GitHub's own registry** (`npm.pkg.github.com`) instead of npmjs.org. It uses `GITHUB_TOKEN` for authentication, which is automatically available in GitHub Actions — no manual token setup needed. Great for keeping packages **private within your organization** while still using `npm install`.
+
+--- 
 
 ## 📦 Manual Publish to npm
 
@@ -33,6 +66,8 @@ npm publish --registry https://registry.npmjs.org
 # 6. Publish scoped package
 npm pkg set name=@vincentzyuapps/qwq-npm-test-scoped
 npm publish --registry https://registry.npmjs.org --access public
+# 7. Publish scoped package to GitHub Packages
+# ... wait, why not use GitHub Actions CI?
 ```
 
 ## 🤖 Auto Publish via GitHub Actions
