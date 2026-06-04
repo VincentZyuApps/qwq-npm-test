@@ -1,8 +1,8 @@
-![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?custom_description=test+github+ci+%F0%9F%A7%AA%F0%9F%9A%80%E2%9C%85&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
+![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?custom_description=%F0%9F%A7%AA+A+sandbox+repository+for+evaluating+GitHub+Actions+CI%2FCD+workflows+within+the+npm+ecosystem.+%F0%9F%93%A6+&custom_language=NPM&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Ficon.icepanel.io%2FTechnology%2Fsvg%2FGitHub-Actions.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Auto)
 
 # qwq-npm-test
 
-> test github ci
+> 🧪 A sandbox repository for evaluating GitHub Actions CI/CD workflows within the npm ecosystem. 📦
 
 [![npm-unscoped](https://img.shields.io/npm/v/qwq-npm-test?label=npm-unscoped&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/qwq-npm-test)
 [![npm-scoped](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped?label=npm-scoped&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped)
@@ -123,3 +123,13 @@ flowchart TD
     Test -->|Pass| Pub2["**🏷️ Scoped**<br>*npmjs.org*<br>@vincentzyuapps/qwq-npm-test-scoped"]
     Test -->|Pass| Pub3["**🐙 GitHub Packages**<br>*npm.pkg.github.com*<br>@vincentzyuapps/qwq-npm-test-scoped"]
 ```
+
+---
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+![qwq-npm-test](https://socialify.git.ci/VincentZyuApps/qwq-npm-test/image?custom_description=%F0%9F%A7%AA+A+sandbox+repository+for+evaluating+GitHub+Actions+CI%2FCD+workflows+within+the+npm+ecosystem.+%F0%9F%93%A6+&custom_language=JavaScript&description=1&font=Source+Code+Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F9%2F91%2FOcticons-mark-github.svg&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
