@@ -29,12 +29,13 @@ jobs:
       - name: Run tests
         run: npm test
 
-  publish:
+  publish-npm-unscoped:
     needs: test
     if: startsWith(github.event.head_commit.message, 'pub')
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -42,7 +43,50 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
-      - name: Publish to npm
-        run: npm publish --provenance
+      - name: Publish unscoped package to npm
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-npm-scoped:
+    needs: test
+    if: startsWith(github.event.head_commit.message, 'pub')
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - name: Publish scoped package to npm
+        run: |
+          node -e "const p=require('./package.json'); p.name='@vincentzyuapps/qwq-npm-test-scoped'; require('fs').writeFileSync('./package.json', JSON.stringify(p, null, 2)+'\n')"
+          npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-github-packages-scoped:
+    needs: test
+    if: startsWith(github.event.head_commit.message, 'pub')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm install
+      - name: Publish scoped package to GitHub Packages
+        run: |
+          node -e "const p=require('./package.json'); p.name='@vincentzyuapps/qwq-npm-test-scoped'; require('fs').writeFileSync('./package.json', JSON.stringify(p, null, 2)+'\n')"
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          npm publish --registry https://npm.pkg.github.com
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

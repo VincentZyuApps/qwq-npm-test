@@ -4,13 +4,17 @@
 
 > test github ci
 
-[![npm version](https://img.shields.io/npm/v/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test)
-[![npm downloads](https://img.shields.io/npm/dm/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test)
+[![npm](https://img.shields.io/npm/v/qwq-npm-test?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/qwq-npm-test)
+[![npm scoped](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped)
+
+| Registry | Package | Command | Badge |
+|---|---|---|---|
+| [npmjs.org](https://www.npmjs.com) | [`qwq-npm-test`](https://www.npmjs.com/package/qwq-npm-test) | `npm publish` | [![npm version](https://img.shields.io/npm/v/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) [![npm downloads](https://img.shields.io/npm/dm/qwq-npm-test)](https://www.npmjs.com/package/qwq-npm-test) |
+| [npmjs.org](https://www.npmjs.com) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) | `npm publish --access public` | [![npm scoped version](https://img.shields.io/npm/v/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) [![npm scoped downloads](https://img.shields.io/npm/dm/%40vincentzyuapps%2Fqwq-npm-test-scoped)](https://www.npmjs.com/package/@vincentzyuapps/qwq-npm-test-scoped) |
+| [GitHub Packages](https://github.com/features/packages) | [`@vincentzyuapps/qwq-npm-test-scoped`](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) | `npm publish --registry https://npm.pkg.github.com` | [![GitHub Package](https://img.shields.io/badge/gh-packages-blue?logo=github)](https://github.com/VincentZyuApps/qwq-npm-test/pkgs/npm/qwq-npm-test-scoped) |
+
 
 [![CI Status](https://img.shields.io/github/actions/workflow/status/VincentZyuApps/qwq-npm-test/publish.yml?branch=master&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/VincentZyuApps/qwq-npm-test/actions/workflows/publish.yml)
-[![GitHub last commit](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.github.com%2Frepos%2FVincentZyuApps%2Fqwq-npm-test%2Fcommits%2Fmaster&query=%24.commit.committer.date&label=last%20commit&style=for-the-badge&logo=github&logoColor=white)](https://github.com/VincentZyuApps/qwq-npm-test)
-
----
 
 ## 📦 Manual Publish to npm
 
@@ -24,30 +28,30 @@ npm login --registry https://registry.npmjs.org
 echo "//registry.npmjs.org/:_authToken=npm_xxxxx" > .npmrc
 # 4. Test
 npm test
-# 5. Publish
+# 5. Publish unscoped package
 npm publish --registry https://registry.npmjs.org
+# 6. Publish scoped package
+npm pkg set name=@vincentzyuapps/qwq-npm-test-scoped
+npm publish --registry https://registry.npmjs.org --access public
 ```
 
 ## 🤖 Auto Publish via GitHub Actions
 
-> **Note:** First add `NPM_TOKEN` in GitHub repo **Settings → Secrets and variables → Actions → New repository secret**.
+> **Prerequisites:** Add these secrets in GitHub repo **Settings → Secrets and variables → Actions → New repository secret**:
+> - `NPM_TOKEN` — npm token with publish permission for both `qwq-npm-test` and `@vincentzyuapps/qwq-npm-test-scoped`
 
 ```bash
 # 1. Init Git repo
 git init
 git remote add origin git@github.com:VincentZyuApps/qwq-npm-test.git
-# 2. Add .npmrc to .gitignore (avoid leaking token)
-touch .gitignore
-echo ".npmrc" >> .gitignore
-# 3. Commit and bump version
+# 2. Commit and bump version
 git add .
 git commit -m "chore: save changes before version bump"
 npm version patch
-# Or manually update version
-# 4. Commit again (message must start with "pub" to trigger publish)
+# 3. Commit again (message must start with "pub" to trigger publish)
 git add .
 git commit -m "pub qwq"
-# 5. Push
+# 4. Push
 git push -u origin master
 ```
 
@@ -58,7 +62,7 @@ git push -u origin master
 | Token type | Granular Access Token |
 | **✔ Bypass 2FA** | **Required** |
 | Packages → Permissions | **Read and write** |
-| Packages → Scope | **All packages** or select `qwq-npm-test` only |
+| Packages → Scope | **All packages** or include both `qwq-npm-test` and `@vincentzyuapps/qwq-npm-test-scoped` |
 | Organizations | No access |
 | Expiration | **No expiration** or **90 days** recommended |
 
@@ -68,18 +72,19 @@ git push -u origin master
 
 When pushing to `master` or `main`, GitHub Actions checks the commit message:
 
-- **starts with `pub`** (case-insensitive) → auto runs `npm publish`
+- **starts with `pub`** (case-insensitive) → auto publishes **3 packages** across npmjs.org and GitHub Packages
 - **otherwise** → skip
 
 ### 🔁 CI Workflow
 
 ```mermaid
 flowchart TD
-    Push["git push master / main"] --> Check["check-commit"]
-    Check --> Q{"commit starts with 'pub'?"}
+    Push["🚀 Push<br>git push master / main"] --> Check["🔍 Check<br>check-commit"]
+    Check --> Q{"❓ Commit starts with 'pub'?"}
     Q -->|No| Done1["✅ Done"]
-    Q -->|Yes| Test["test<br>npm test"]
+    Q -->|Yes| Test["🧪 Test<br>npm test"]
     Test -->|Fail| Fail["❌ Abort"]
-    Test -->|Pass| Pub["publish<br>npm publish"]
-    Pub --> Done2["✅ Published"]
+    Test -->|Pass| Pub1["**📦 Unscoped**<br>*npmjs.org*<br>qwq-npm-test"]
+    Test -->|Pass| Pub2["**🏷️ Scoped**<br>*npmjs.org*<br>@vincentzyuapps/qwq-npm-test-scoped"]
+    Test -->|Pass| Pub3["**🐙 GitHub Packages**<br>*npm.pkg.github.com*<br>@vincentzyuapps/qwq-npm-test-scoped"]
 ```

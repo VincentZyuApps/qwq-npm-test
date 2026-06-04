@@ -1,12 +1,26 @@
 {
   "name": "qwq-npm-test",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "test github ci 🧪🚀✅",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
-  "keywords": [],
+  "keywords": [
+    "qwq",
+    "test",
+    "ci",
+    "github-actions",
+    "sandbox",
+    "playground",
+    "experimental",
+    "npm-package",
+    "automation",
+    "tutorial"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VincentZyuApps/qwq-npm-test.git"
